@@ -9,7 +9,6 @@ set number
 
 "default indent settings
 set shiftwidth=2
-set softtabstop=
 set expandtab
 set autoindent
 
