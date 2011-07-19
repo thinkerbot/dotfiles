@@ -7,6 +7,9 @@ set backspace=indent,eol,start
 "show line numbers
 set number
 
+"show the ruler
+set ruler
+
 "default indent settings
 set shiftwidth=2
 set expandtab
