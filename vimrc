@@ -1,4 +1,4 @@
-e Vim settings, rather then Vi settings.
+"Use Vim settings, rather then Vi settings.
 set nocompatible
 
 "allow backspacing over everything in insert mode
