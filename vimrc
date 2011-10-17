@@ -21,4 +21,6 @@ if has("syntax")
 endif
 
 "enable the mouse
-set mouse=a
+if has("mouse")
+  set mouse=a
+endif
