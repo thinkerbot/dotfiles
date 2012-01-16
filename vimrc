@@ -1,26 +1,30 @@
-"Use Vim settings, rather then Vi settings.
-set nocompatible
+set nocompatible                " choose no compatibility with legacy vi
+syntax enable
+set encoding=utf-8
+set showcmd                     " display incomplete commands
+filetype plugin indent on       " load file type plugins + indentation
 
-"allow backspacing over everything in insert mode
-set backspace=indent,eol,start
+"" Whitespace
+set nowrap                      " don't wrap lines
+set tabstop=2 shiftwidth=2      " a tab is two spaces (or set this to 4)
+set expandtab                   " use spaces, not tabs (optional)
+set backspace=indent,eol,start  " backspace through everything in insert mode
 
-"show line numbers
+"" Searching
+set hlsearch                    " highlight matches
+set incsearch                   " incremental searching
+set ignorecase                  " searches are case insensitive...
+set smartcase                   " ... unless they contain at least one capital letter
+
+"" Styles
 set number
-
-"show the ruler
 set ruler
 
-"default indent settings
-set shiftwidth=2
-set expandtab
-set autoindent
-
-"turn on syntax highlighting
+"" Usability
 if has("syntax")
-  syntax on
+  syntax on                     "turn on syntax highlighting
 endif
 
-"enable the mouse
 if has("mouse")
-  set mouse=a
+  set mouse=a                   "enable the mouse
 endif
