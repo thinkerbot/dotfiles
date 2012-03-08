@@ -28,3 +28,7 @@ endif
 if has("mouse")
   set mouse=a                   "enable the mouse
 endif
+
+"" Colors
+set background=dark
+colorscheme solarized
