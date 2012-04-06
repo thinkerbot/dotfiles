@@ -4,6 +4,6 @@ Personal config files
 
 == Installation
 
-  curl -gL https://raw.github.com/thinkerbot/dotfiles/master/vimrc > .vimrc
+  curl -gL https://raw.github.com/thinkerbot/dotfiles/master/vimrc > ~/.vimrc
 
 
