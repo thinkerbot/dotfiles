@@ -21,4 +21,6 @@ DOC
 
 #############################################################################
 # Setup git
-git config --global color.ui true
+if which -s git 
+then git config --global color.ui true
+fi
