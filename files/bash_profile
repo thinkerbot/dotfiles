@@ -1,0 +1,10 @@
+export PS1="\u:\w> "
+export EDITOR=vi
+export BUNDLER_EDITOR=mate
+export PATH="$PATH:$DOTFILES_HOME/bin"
+
+# brew install bash-completion
+if [ -f `brew --prefix`/etc/bash_completion ]; then
+    . `brew --prefix`/etc/bash_completion
+fi
+

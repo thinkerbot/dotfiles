@@ -1,0 +1,24 @@
+#!/bin/bash
+#############################################################################
+# Installs the dotfiles.  Execute and then source .bash_profile
+
+install () {
+  grep -v DOTFILES_HOME "$1" > "$1.tmp"
+  cat - "$1.tmp" > "$1"
+  rm "$1.tmp"
+}
+
+DOTFILES_HOME="${1:-\$HOME/.dotfiles}"
+
+install ~/.bash_profile <<DOC
+export DOTFILES_HOME="$DOTFILES_HOME"
+source "\$DOTFILES_HOME/files/bash_profile"
+DOC
+
+install ~/.vimrc <<"DOC"
+source $DOTFILES_HOME/files/vimrc
+DOC
+
+#############################################################################
+# Setup git
+git config --global color.ui true

@@ -1,4 +1,0 @@
-= Dotfiles
-
-Personal config files
-
