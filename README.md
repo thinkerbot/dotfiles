@@ -7,9 +7,14 @@ Personal config files
 Clone the repo and run the setup script.
 
     git clone git@github.com:thinkerbot/dotfiles.git ~/.dotfiles
-    ~/.dotfiles/setup
+    cd ~/.dotfiles
+    ./setup
 
-If cloning somewhere other than `~/.dotfiles` then add that path to as an
-argument to the setup script.
+By default the setup script expects dotfiles to exist at `~/.dotfiles` and will
+checkout linked repos into `.dotfiles/repos`.  To change these locations,
+provide them as arguments:
 
-    SOMEWHERE/.dotfiles SOMEWHERE
+    # setup DOTFILES_DIR REPOS_DIR
+    ./setup ~/.dotfiles ~/Documents/Repos
+
+
