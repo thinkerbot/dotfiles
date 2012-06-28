@@ -38,6 +38,7 @@ mkdir -p "$repos_dir"
 cd "$repos_dir"
 
 git_clone git://gist.github.com/2638925.git 
+git_clone git://github.com/thinkerbot/ts.git
 
 cd - >/dev/null
 
