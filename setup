@@ -3,7 +3,7 @@
 # Installs the dotfiles.  Execute and then source .bash_profile
 
 install () {
-  grep -v DOTFILES_HOME "$1" > "$1.tmp"
+  grep -v DOTFILES_HOME "$1" > "$1.tmp" 2>/dev/null
   cat - "$1.tmp" > "$1"
   rm "$1.tmp"
 }
