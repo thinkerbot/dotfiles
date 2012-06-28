@@ -8,7 +8,7 @@ install () {
   rm "$1.tmp"
 }
 
-DOTFILES_HOME="${1:-\$HOME/.dotfiles}"
+DOTFILES_HOME="${1:-$HOME/.dotfiles}"
 
 install ~/.bash_profile <<DOC
 export DOTFILES_HOME="$DOTFILES_HOME"
@@ -24,3 +24,20 @@ DOC
 if which -s git 
 then git config --global color.ui true
 fi
+
+#############################################################################
+# Setup scripts 
+git_clone () {
+  if ! [ -d "$(basename "$1" ".git")" ]
+  then git clone "$1"
+  fi
+}
+
+repos_dir="$DOTFILES_HOME/repos"
+mkdir -p "$repos_dir"
+cd "$repos_dir"
+
+git_clone git://gist.github.com/2638925.git 
+
+cd - >/dev/null
+
