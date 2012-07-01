@@ -1,7 +1,20 @@
 #!/bin/bash
 #############################################################################
 DOTFILES_HOME="${1:-$HOME/.dotfiles}"
-REPOS_HOME="${2:-$DOTFILES_HOME/repos}"
+
+if ! [ -e "$DOTFILES_HOME" ]
+then
+  printf "error: dotfiles dir does not exist: %s" "$DOTFILES_HOME"
+  exit 1
+fi
+
+# The complicated code ensures that REPOS_HOME is, in order:
+# * provided by the user
+# * the existing symlink
+# * dotfiles/repos
+CURRENT_REPOS_HOME="$(ls -l "$DOTFILES_HOME" | grep 'repos ->' | awk '{print $NF}')"
+REPOS_HOME="${2:-${CURRENT_REPOS_HOME:-$DOTFILES_HOME/repos}}"
+REPOS_DIR="$DOTFILES_HOME/repos"
 
 #############################################################################
 # Installs the dotfiles.  Execute and then source .bash_profile
@@ -35,15 +48,15 @@ git_clone () {
   fi
 }
 
-if [ -e "$DOTFILES_HOME/repos" ] && ! rm "$DOTFILES_HOME/repos"
+if [ -e "$REPOS_DIR" ] && [ x"$REPOS_HOME" != x"$REPOS_DIR" ] && ! rm "$REPOS_DIR"
 then
   printf "Manually remove the repos dir and try again.\n"
   exit 1
 fi
 
 mkdir -p "$REPOS_HOME"
-if ! [ -e "$DOTFILES_HOME/repos" ]
-then ln -s "$REPOS_HOME" "$DOTFILES_HOME/repos"
+if ! [ -e "$REPOS_DIR" ]
+then ln -s "$REPOS_HOME" "$REPOS_DIR"
 fi
 cd "$REPOS_HOME"
 
