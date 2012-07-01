@@ -4,6 +4,7 @@ set backspace=indent,eol,start
 set number
 set hidden
 set ruler
+set showcmd
 
 "" Indent settings
 set shiftwidth=2
