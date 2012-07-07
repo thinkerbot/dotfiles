@@ -62,6 +62,7 @@ cd "$REPOS_HOME"
 
 git_clone git://gist.github.com/2638925.git 
 git_clone git://github.com/thinkerbot/ts.git
+git_clone git://github.com/thinkerbot/series.git
 
 cd - >/dev/null
 
