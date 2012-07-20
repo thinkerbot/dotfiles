@@ -1,0 +1,10 @@
+#!/bin/bash
+
+git log -n1 --oneline $@
+echo "---"
+git show $@ |
+sed -ne 's/^diff --git //p' |
+tr ' ' "\n" |
+sed -e "s|^[ab]|$(git rev-parse --show-toplevel)|" |
+sort -u 
+
