@@ -60,7 +60,10 @@ then ln -s "$REPOS_HOME" "$REPOS_DIR"
 fi
 cd "$REPOS_HOME"
 
-git_clone git://gist.github.com/2638925.git 
+# ln -s ../repos/3454779/slice bin/slice
+
+git_clone git://gist.github.com/2638925.git
+git_clone git://gist.github.com/3454779.git
 git_clone git://github.com/thinkerbot/ts.git
 git_clone git://github.com/thinkerbot/series.git
 
