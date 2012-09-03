@@ -16,5 +16,3 @@ provide them as arguments:
 
     # setup DOTFILES_DIR REPOS_DIR
     ./setup ~/.dotfiles ~/Documents/Repos
-
-
