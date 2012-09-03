@@ -60,12 +60,9 @@ then ln -s "$REPOS_HOME" "$REPOS_DIR"
 fi
 cd "$REPOS_HOME"
 
-# ln -s ../repos/3454779/slice bin/slice
-
-git_clone git://gist.github.com/2638925.git
-git_clone git://gist.github.com/3454779.git
-git_clone git://github.com/thinkerbot/ts.git
-git_clone git://github.com/thinkerbot/series.git
+awk -F '#' '{if ($1) print $1}' "$DOTFILES_HOME"/files/repos |
+while read repo
+do git_clone "$repo"
+done
 
 cd - >/dev/null
-

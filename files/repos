@@ -1,0 +1,5 @@
+# List git repos for utilities
+git://gist.github.com/2638925.git       # sprintf
+git://gist.github.com/3454779.git       # slice
+git://github.com/thinkerbot/ts.git
+git://github.com/thinkerbot/series.git
