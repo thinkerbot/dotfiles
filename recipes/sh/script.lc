@@ -1,0 +1,38 @@
+fields:
+  name: script
+  desc: description
+---
+#!/bin/bash
+#############################################################################
+<%= name %>_usage () {
+printf "%s" "\
+usage: <%= name %> [options]
+
+  <%= desc %>
+
+options:
+
+  -h        prints help
+
+"
+}
+args=""
+while [ $OPTIND -le $# ]
+do
+  if getopts "h" option
+  then
+    case $option in
+      (h) <%= name %>_usage
+          exit 0 ;;
+
+      (*) <%= name %>_usage | head -n 1
+          exit 2 ;;
+    esac
+  else
+    args="$args \"\${$OPTIND}\""
+    OPTIND=$(($OPTIND + 1))
+  fi
+done
+eval set -- "$args"
+
+#############################################################################
