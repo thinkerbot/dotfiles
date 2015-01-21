@@ -7,21 +7,3 @@ export PATH="$PATH:$DOTFILES_HOME/bin"
 if [ -f `brew --prefix`/etc/bash_completion ]; then
     . `brew --prefix`/etc/bash_completion
 fi
-
-# add utilites with a bin dir to PATH (allows discovery of manpages)
-# other utilites should be linked into .dotfiles/bin
-#
-#   ln -s ../repos/3454779/slice bin/slice
-#
-
-export PATH="$PATH:$(
-awk -F '#' '{if ($1) print $1}' "$DOTFILES_HOME"/files/repos |
-while read repo
-do
-  project=$(basename "$repo" ".git")
-  bindir="$DOTFILES_HOME/repos/$project/bin"
-  if [ -e "$bindir" ]
-  then printf ":%s" "$bindir"
-  fi
-done
-)"
