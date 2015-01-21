@@ -4,15 +4,20 @@ Personal config files
 
 = Installation
 
-Clone the repo and run the setup script.
+Clone the repo
 
-    git clone git@github.com:thinkerbot/dotfiles.git ~/.dotfiles
+    export DOTFILES_HOME="$HOME/.dotfiles"
+    git clone git@github.com:thinkerbot/dotfiles.git "$DOTFILES_HOME"
     cd ~/.dotfiles
-    ./setup
 
-By default the setup script expects dotfiles to exist at `~/.dotfiles` and will
-checkout linked repos into `.dotfiles/repos`.  To change these locations,
-provide them as arguments:
+Installation:
 
-    # setup DOTFILES_DIR REPOS_DIR
-    ./setup ~/.dotfiles ~/Documents/Repos
+    cat - >> "$HOME/.bash_profile" <<DOC
+    # dotfiles
+    export DOTFILES_HOME="$DOTFILES_HOME"
+    source "\$DOTFILES_HOME/files/bash_profile"
+    DOC
+
+    cat - >> "$HOME/.vimrc" <<DOC
+    source $DOTFILES_HOME/files/vimrc
+    DOC
