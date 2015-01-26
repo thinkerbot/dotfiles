@@ -1,0 +1,3 @@
+desc: convert json to csv with jq
+---
+jq -r -s '([<%= fields.map {|field| "\"#{field}\"" }.join(',') %>] | @csv), (.[] | [<%= fields.map {|field| ".#{field}" }.join(',') %>] | @csv)'

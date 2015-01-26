@@ -23,3 +23,5 @@ Installation:
     DOC
 
     ln -s "$DOTFILES_HOME/files/Preferences.sublime-settings" "$HOME/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings"
+
+    ln -s "$DOTFILES_HOME/recipes" "$HOME/.linecook"
