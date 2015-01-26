@@ -1,0 +1,41 @@
+fields:
+  name: NAME
+  desc: DESCRIPTION
+mode: 0755
+---
+<% func_name = name.downcase %>
+#!/bin/bash
+#############################################################################
+<%= func_name %>_usage () {
+printf "%s" "\
+usage: <%= name %> [-h] ARGS...
+
+  <%= desc %>
+
+options:
+
+  -h          prints help
+
+"
+}
+args=""
+while [ $OPTIND -le $# ]
+do
+  if getopts "h" option
+  then
+    case $option in
+      (h) <%= func_name %>_usage
+          exit 0 ;;
+      (*) <%= func_name %>_usage | head -n 1
+          exit 2 ;;
+    esac
+  else
+    args="$args \"\${$OPTIND}\"" 
+    OPTIND=$(($OPTIND + 1))
+  fi
+done
+eval set -- "$args"
+
+#############################################################################
+
+printf "%s\n" "hello world"

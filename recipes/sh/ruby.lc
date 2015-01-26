@@ -1,0 +1,35 @@
+fields:
+  name: NAME
+  desc: DESCRIPTION
+mode: 0755
+---
+#!/usr/bin/env ruby
+begin
+  require 'optparse'
+
+  options = {}
+  OptionParser.new do |opts|
+    opts.banner = %{
+usage: <%= name %> [options] ARGS...
+
+  <%= desc %>
+
+options:
+
+}.lstrip
+
+    opts.on("-h", "--help", "print this help") do
+      puts opts
+      exit
+    end
+
+  end.parse!
+
+  args = ARGV.dup; ARGV.clear
+  puts "hello world"
+
+rescue Interrupt
+  exit 130
+rescue Errno::EPIPE
+  exit 0
+end

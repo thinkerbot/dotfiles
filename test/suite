@@ -1,0 +1,3 @@
+#!/bin/sh
+find test/recipes -type f |
+xargs ts "$@"

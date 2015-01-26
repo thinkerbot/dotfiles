@@ -1,0 +1,20 @@
+#!/bin/bash
+. test/helper
+
+setup () {
+script="$(create_linecook_fixture sh/bash)"
+}
+
+#
+# tests
+#
+
+test_script_h_prints_hello_world () {
+"$script" | grep -q "hello world"
+}
+
+test_script_h_prints_help () {
+"$script" -h | grep -q "usage: NAME"
+}
+
+. ts

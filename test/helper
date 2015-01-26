@@ -1,0 +1,17 @@
+export LINECOOK_PATH="$PWD/recipes"
+export FIXTURE_PATH="$PWD/tmp/fixtures"
+rm -r "$FIXTURE_PATH" 2>/dev/null
+
+create_linecook_fixture () {
+  recipe="$1"
+  file="$FIXTURE_PATH/$recipe"
+
+  if [ ! -e "$file" ]
+  then
+    mkdir -p "$(dirname "$file")"
+    linecook "$recipe" > "$file"
+    chmod +x "$file"
+  fi
+  
+  printf "%s\n" "$file"
+}
