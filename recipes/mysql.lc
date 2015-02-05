@@ -1,0 +1,43 @@
+fields:
+  database: database
+  username: user
+  password: pass
+  tables: [table]
+---
+<% ::Kernel.require 'shellwords' %>
+database=<%= database.shellescape %>
+username=<%= username.shellescape %>
+password=<%= password.shellescape %>
+
+# console
+mysql -u "$username" -p "$password"
+
+# create
+(
+  printf "DROP DATABASE IF EXISTS \`%s\`;\n" "$database"
+  printf "CREATE DATABASE \`%s\`;\n" "$database"
+  printf "USE \`%s\`;\n" "$database"
+  printf "SET sql_mode = ANSI;\n"
+) | mysql -u "$username" -p "$password"
+
+# truncate
+(
+  printf "USE \`%s\`;\n" "$database"
+  printf "SET FOREIGN_KEY_CHECKS = 0;\n" "$database"
+  printf "show tables;" | $mysql_cmd -s "$database" | awk '{printf "TRUNCATE \`%s\`;\n", $1}'
+  printf "SET FOREIGN_KEY_CHECKS = 1;\n" "$database"
+  printf "SET sql_mode = ANSI;\n"
+) | mysql -u "$username" -p "$password"
+
+# execute
+(
+  printf "USE \`%s\`;\n" "$database"
+  printf "SET sql_mode = ANSI;\n"
+) | mysql -u "$username" -p "$password"
+
+# export schema
+mysqldump -u "$username" -p "$password" --opt --compact --no-create-db --single-transaction --no-data "$database" "$@" 2>/dev/null |
+sed -e 's/ AUTO_INCREMENT=[0-9]* / /'
+
+# export data
+mysqldump -u "$username" -p "$password" --opt --compact --no-create-db --single-transaction --no-create-info --no-tablespaces "$database" "$@" 2>/dev/null
