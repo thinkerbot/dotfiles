@@ -1,0 +1,21 @@
+fields:
+  database: db.sqlite3
+  tables: [table]
+---
+<% ::Kernel.require 'shellwords' %>
+database=<%= database.shellescape %>
+
+# console
+sqlite3 "$database"
+
+# create
+# nothing needed - same as console
+
+# truncate
+printf ".tables\n" | sqlite3 "$database" | awk '{printf "DELETE from %s;\n", $1}'
+
+# export schema
+printf ".schema %s\n" <%= tables.shelljoin %> | sqlite3 "$database"
+
+# export data
+printf ".dump %s\n"   <%= tables.shelljoin %> | sqlite3 "$database" | grep '^INSERT'
