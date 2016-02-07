@@ -30,4 +30,6 @@ Installation:
     ln -s "$DOTFILES_HOME/recipes" "$HOME/.linecook/recipes"
 
     brew install bash-completion
-    
+
+    git config --global user.name "Simon Chiang"
+    git config --global user.email "simon.a.chiang@gmail.com"
