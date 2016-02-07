@@ -4,6 +4,11 @@ export BUNDLER_EDITOR=subl
 export PATH="$PATH:$DOTFILES_HOME/bin"
 
 # brew install bash-completion
-if [ -f `brew --prefix`/etc/bash_completion ]; then
-    . `brew --prefix`/etc/bash_completion
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+  . $(brew --prefix)/etc/bash_completion
+fi
+
+# docker-machine
+if docker-machine env >/dev/null 2>&1 
+then eval $(docker-machine env default)
 fi

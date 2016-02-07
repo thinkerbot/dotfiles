@@ -23,8 +23,11 @@ Installation:
     DOC
 
     # ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" /usr/local/bin/subl
-    ln -s "$DOTFILES_HOME/files/Preferences.sublime-settings" "$HOME/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime.settings"
+    ln -s "$DOTFILES_HOME/files/Preferences.sublime-settings" "$HOME/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings"
     ln -s "$DOTFILES_HOME/files/Preferences.sublime-settings" "$HOME/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings"
 
     mkdir -p "$HOME/.linecook"
     ln -s "$DOTFILES_HOME/recipes" "$HOME/.linecook/recipes"
+
+    brew install bash-completion
+    
