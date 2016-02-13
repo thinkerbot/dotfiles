@@ -57,7 +57,11 @@ Ruby
     printf "%s\n" "gem: --no-document" > ~/.gemrc
 
     cat > ~/.irbrc <<DOC
-    require 'irb/ext/save-history'
-    IRB.conf[:SAVE_HISTORY] = 3000
-    IRB.conf[:HISTORY_FILE] = "#{ENV['HOME']}/.irb-save-history"
+    unless defined? IRBRC_LOADED
+      require 'irb/completion'
+      require 'irb/ext/save-history'
+      IRB.conf[:SAVE_HISTORY] = 3000
+      IRB.conf[:HISTORY_FILE] = "~/.irb_history"
+      IRBRC_LOADED=true
+    end
     DOC
