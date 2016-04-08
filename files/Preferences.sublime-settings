@@ -3,6 +3,7 @@
   "translate_tabs_to_spaces": true,
 
   "color_scheme": "Packages/Color Scheme - Default/Mac Classic.tmTheme",
+  "draw_white_space": "all",
 
   "ignored_packages": [],
   "vintage_ctrl_keys": true,
