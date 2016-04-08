@@ -32,6 +32,8 @@ Git
 
     git config --global user.name "Simon Chiang"
     git config --global user.email "simon.a.chiang@gmail.com"
+    git config --global core.excludesfile "$HOME/.gitignore_global"
+    ln -s "$DOTFILES_HOME/files/gitignore_global" "$HOME/.gitignore_global"
 
 Tools
 
