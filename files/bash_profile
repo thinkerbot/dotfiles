@@ -8,12 +8,7 @@ if [ -f $(brew --prefix)/etc/bash_completion ]; then
   . $(brew --prefix)/etc/bash_completion
 fi
 
-# docker-machine
-if docker-machine env >/dev/null 2>&1 
-then eval $(docker-machine env default)
-fi
-
 # rbenv
-if command -v rbenv 2>/dev/null
+if command -v rbenv >/dev/null 2>&1
 then eval "$(rbenv init -)"
 fi
