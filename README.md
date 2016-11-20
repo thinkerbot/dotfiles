@@ -42,6 +42,7 @@ Tools
 
     brew tap goodlittlescript/homebrew-gls
     brew install ts
+    brew install gls
 
     # mkdir -p "$HOME/.linecook"
     # ln -s "$DOTFILES_HOME/recipes" "$HOME/.linecook/recipes"
@@ -67,3 +68,7 @@ Ruby
       IRBRC_LOADED=true
     end
     DOC
+
+Services
+
+    brew install postgres
