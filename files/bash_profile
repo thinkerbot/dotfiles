@@ -14,4 +14,6 @@ then eval $(docker-machine env default)
 fi
 
 # rbenv
-eval "$(rbenv init -)"
+if command -v rbenv 2>/dev/null
+then eval "$(rbenv init -)"
+fi
